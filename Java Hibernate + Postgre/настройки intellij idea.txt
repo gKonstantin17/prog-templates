@@ -1,0 +1,46 @@
+ПОДКЛЮЧЕНИЕ IDE К БД
+IDE может самостоятельно взаимодействовать с бд, не нужно устанавливать клиентские приложения бд для просмотра таблиц
+Для этого нужно открыть
+View -> Tool Window -> Database
+в окне нажать + -> Data Source -> PostgreSQL
+Написать User: postgres, Password
+Установить что просит IDE, нажать Test Connection.
+IDE подключилась к бд!
+
+пкм по postgres -> properties -> Schemas -> postgres -> Выбираем свою схему
+Загрузятся таблицы, представления, триггеры 
+двойным кликом по таблице можно читать содержимое таблиц
+
+
+
+СОЗДАНИЕ ПРОЕКТА 
+Для последнего Hibernate выбираем Java 17, 
+Устанавливаем зависимости Hibernate-core и Postgre JDBC DRIVER из mvnrepository в Gradle:
+Открываем File -> Project Structure -> Facets
+Нажимаем +, JPA 
+в Default JPA Provider выбираем Hibernate 
+Нажимаем +, Hibernate 
+
+
+В вкладке Modules выбираем Hibernate в Descriptors +, выбираем папку src/main/resources
+Создастся файл hibernate.cfg.xml 
+нужно заполнить как минимум 4 property
+
+После добавление JPA должна появиться вкладка Persistance в ней во всех проект.main 
+пкм -> Assign Data Sources -> в Data Source добавить подключенную к IDE базу данных
+
+
+ИМПОРТ ТАБЛИЦ
+создать package для entity
+тыкаем в Persistance ->пкм по значку Hibernate -> Generate Persistance Mapping -> By Database Schema
+Выбираем в каком package генерировать классы, выбираем таблицу
+
+галочки:
+Add Session Factory - обновить hibernate.cfg.xml, в теге session-factory создастся заполненный 
+`<mapping class=""/>`, обязательная настройка
+
+Generate Column Properties - генерация инфы по типу
+`@Table(name = "user_data", schema = "todolist", catalog = "postgres")`
+Generate JPA Annotations - используя Java аннотация
+
+Создаться табличный класс, с аннотациями, геттерами, сеттерами, equals, hashcode. Используем Lombok, чтобы убрать эту парашу.
