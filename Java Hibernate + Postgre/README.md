@@ -113,6 +113,18 @@ src\main\resources\log4j2.properties
 
 `private Set<User> users;`
 
+
+Также чтобы избежать зацикливание при доставании записей
+переопределены методы equals и hashCode
+
+
+### Кеширование
+включается при добавление сущностям
+
+`@Cacheable`
+`@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)`
+
+
 ### Подключение к бд
 класс `HibernateUtil` является фабрикой для созданий сессий
 
