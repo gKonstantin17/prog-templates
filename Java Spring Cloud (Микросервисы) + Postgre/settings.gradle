@@ -1,0 +1,8 @@
+rootProject.name = 'planner-micros'
+include 'planner-server'
+include 'planner-config'
+include 'planner-gateway'
+include 'planner-todo'
+include 'planner-entity'
+include 'planner-utils'
+include 'planner-users'
