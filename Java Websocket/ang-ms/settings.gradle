@@ -1,0 +1,5 @@
+rootProject.name = 'ang-ms'
+include('sys-server')
+include('sys-config')
+include('sys-gateway')
+include('rs')
