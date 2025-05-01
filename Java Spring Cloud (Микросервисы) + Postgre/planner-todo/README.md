@@ -22,7 +22,9 @@ spring.profiles.active=micro,todo,logging,kafka
 
 [Структура проекта](docs/Sctructure.md)
 
-[Kafka](docs/Kafka.md)
+[Вызов микросервисов друг друга](docs/CallMs.md)
+
+[Message Brokers](docs/MessageBrokers.md)
 
 ***
 

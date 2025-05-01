@@ -10,6 +10,8 @@ RestTemplate и WebClient для вызова Users
 
 findByParam у Task возвращает страничный (Pageable) результат
 
-отправляет запросы от сервиса Users
+принимает запросы от сервиса Todo
+
+
 
 [Назад](../README.md)

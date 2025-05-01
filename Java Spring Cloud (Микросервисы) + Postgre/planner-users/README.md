@@ -5,25 +5,20 @@
 **Зависимости:**
 такие же как у [Todo](../planner-todo/README.md)
 
-у main метода должна быть аннотация `@EnableEurekaServer`
+у main метода должна быть аннотация `@EnableDiscoveryClient`
 
-у application.properties ссылка на сервер конфигурации (в котором находятся все другие app.props)
-
+application.properties
 ```
-spring.application.name=planner-server
-server.port=8761
+spring.application.name=planner-users
 spring.config.import=optional:configserver:http://localhost:8888
+spring.profiles.active=users,logging,kafka,kc
 ```
-
+[Профили](docs/ConfigFiles.md) из config server
 который включает planner-server.properties:
 
-```
-# url, куда будет происходить регистрация микросервисов
-eureka.client.service-url.defaultZone=http://localhost:8781/eureka
+Security аналогично как у [Todo](../planner-todo/docs/Security.md)
 
-# отключение лишних логов, т.к. не тут не будем создавать и вызывать микросервисы
-logging.level.com.netflix.eureka=OFF
-logging.level.com.netflix.discovery=OFF
-```
+[Структура проекта](docs/Sctructure.md)
 
+***
 [RootProject](../README.md)
