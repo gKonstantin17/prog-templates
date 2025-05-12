@@ -7,7 +7,7 @@ PostgreSQL, в которой пустая бд с названием Kis
 ### Backend и миграция
 **обновить Visual Studio и .net (sdk)**
 
-скачать и распаковать архив
+скачать и распаковать [архив](https://github.com/gKonstantin17/prog-templates/releases/tag/react-cSharp-simple)
 
 открыть backend/kis.sln
 
