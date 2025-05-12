@@ -6,7 +6,7 @@ PostgreSQL, в которой пустая бд с названием KIS
 ### Backend и миграция
 **обновить Visual Studio и .net (sdk)**
 
-скачать и распоковать архив
+скачать и распаковать архив
 
 открыть backend/kis.sln
 
@@ -24,7 +24,7 @@ cd kis
 через `cmd` в директории frontend прописать
 `npm install`
 
-Тестовые данные таблицы Specification
+**Тестовые данные таблицы Specification**
 
 ```
 INSERT INTO public."Specification" ("Level", "Name", "Count", "ParentId") VALUES
