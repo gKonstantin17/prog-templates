@@ -25,6 +25,16 @@ cd kis
 через `cmd` в директории frontend прописать
 `npm install`
 
+**Важно!**
+
+в App.js находится Url подключения к backend, localhost автоматически находит сервер с backend. Можно указать ip локальной сети, чтобы с других устройств перейти на `http://192.168.X.X:3000` и попасть на frontend
+
+```export const env = {
+    //Backend:"http://localhost:5144/api",
+    // или локальный ip
+    Backend:"http://192.168.X.X:5144/api",
+}
+```
 **Тестовые данные таблицы Specification**
 
 ```
