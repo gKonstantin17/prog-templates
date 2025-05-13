@@ -6,7 +6,9 @@ PostgreSQL, в которой пустая бд с названием `Kis`, п�
 
 или подкорректировать строку подключения в backend/kis/Startup.cs
 
-`var connectionString = "Server=localhost;Port=5432;Database=Kis;User Id=postgres;Password=rootroot;";`
+```
+var connectionString = "Server=localhost;Port=5432;Database=Kis;User Id=postgres;Password=rootroot;";
+```
 
 ### Backend и миграция
 **обновить Visual Studio и .net (sdk)**
