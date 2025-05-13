@@ -2,7 +2,11 @@
 
 ## Установка
 ### База данных
-PostgreSQL, в которой пустая бд с названием Kis
+PostgreSQL, в которой пустая бд с названием `Kis`, пользователь: `postgres`, пароль: `rootroot`.
+
+или подкорректировать строку подключения в backend/kis/Startup.cs
+
+`var connectionString = "Server=localhost;Port=5432;Database=Kis;User Id=postgres;Password=rootroot;";`
 
 ### Backend и миграция
 **обновить Visual Studio и .net (sdk)**
