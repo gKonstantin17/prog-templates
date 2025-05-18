@@ -99,34 +99,29 @@ namespace kis.Service
             if (node.Specifications.Any())
             {
                 // Создаем список
-                var leaves = new List<SpecDtoWithChildren>();
-
+                var newChildren = new List<SpecDtoWithChildren>();
                 // для каждого дочернего элемента
                 foreach (var child in node.Specifications)
                 {
-                    
                     ProcessHierarchy(child);
                     // Если у ребенка есть свои дети
+                    // Если это не лист (есть вложенные), то его Count влияет на детей
                     if (child.Specifications.Any())
                     {
-                        // умножаем их Count на Count текущего узла 
-                        // добавляем их в список
-                        foreach (var leaf in child.Specifications)
+                        foreach (var grandChild in child.Specifications)
                         {
-                            leaf.Count *= node.Count;
-                            leaves.Add(leaf);
+                            grandChild.Count *= child.Count; // Умножаем только детей на Count родителя
                         }
+                        newChildren.AddRange(child.Specifications);
                     }
                     else // нет детей - умножаем его Count на Count родителя
                     {
-                        child.Count *= node.Count;
-                        leaves.Add(child);
+                        newChildren.Add(child);
                     }
                 }
-
                 // Заменяем дочерние элементы на найденные листья
                 node.Specifications.Clear();
-                node.Specifications.AddRange(leaves);
+                node.Specifications.AddRange(newChildren);
             }
         }
 
