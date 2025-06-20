@@ -123,7 +123,7 @@ namespace kis.Service
                 if (!specWithChildren.Specifications.Any())
                 {
                     var children = specWithChildren;
-                    children.Count *= order.Count;
+                    children.Count = order.Count;
                     if (specsFromOrders.ContainsKey(children.Id))
                         specsFromOrders[children.Id].Count += (int)children.Count;
                     else
@@ -157,7 +157,7 @@ namespace kis.Service
                 if (!componentsOfProduct.Specifications.Any())
                 {
                     var children = componentsOfProduct;
-                    children.Count *= product.Count;
+                    children.Count = product.Count;
                     if (specsFromWh.ContainsKey(children.Id))
                         specsFromWh[children.Id].Count += (int)children.Count;
                     else

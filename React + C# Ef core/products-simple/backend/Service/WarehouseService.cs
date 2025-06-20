@@ -81,7 +81,7 @@ namespace kis.Service
                 {
                     var children = specWithChildren; // товар принимаем за дочерний элемент
 
-                    children.Count *= order.Count;  // пересчитываем количество исходя из заказа
+                    children.Count = order.Count;  // пересчитываем количество исходя из заказа
                     if (specsFromOrders.ContainsKey(children.Id)) // дочерний элемент суем в словарь
                         specsFromOrders[children.Id] += (int)children.Count;
                     else
@@ -110,7 +110,7 @@ namespace kis.Service
                 if (!componentsOfProduct.Specifications.Any())
                 {
                     var children = componentsOfProduct;
-                    children.Count *= product.Count;
+                    children.Count = product.Count;
                     if (specsFromWh.ContainsKey(children.Id))
                         specsFromWh[children.Id] += (int)children.Count;
                     else
