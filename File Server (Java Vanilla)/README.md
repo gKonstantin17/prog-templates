@@ -8,7 +8,6 @@
 
 Установка и запуск
 ```
-git clone [repository name]
 cd file-server
 gradlew build
 gradlew run
