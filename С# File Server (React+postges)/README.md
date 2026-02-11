@@ -4,13 +4,13 @@
 
 ## Настройка и запуск
 **обновить Visual Studio и .net (sdk)**
-![скачать архив](https://github.com/gKonstantin17/prog-templates/releases/tag/C%23-file-server)
+[скачать архив](https://github.com/gKonstantin17/prog-templates/releases/tag/C%23-file-server)
 
 ### Настройка БД
 
 PostgreSQL, в которой пустая бд с названием `file-service`, пользователь: `postgres`, пароль: `rootroot`.
 
-или подкорректировать строку подключения в backend/kis/Startup.cs
+или подкорректировать строку подключения в Startup.cs
 
 ```var connectionString = "Server=localhost;Port=5432;Database=file-service;User Id=postgres;Password=rootroot;";```
 
