@@ -2,6 +2,30 @@
 
 Файловый сервер с аутентификацией пользователей, поддержкой загрузки файлов и фотографий
 
+## Настройка и запуск
+**обновить Visual Studio и .net (sdk)**
+![скачать архив](https://github.com/gKonstantin17/prog-templates/releases/tag/C%23-file-server)
+
+### Настройка БД
+
+PostgreSQL, в которой пустая бд с названием `file-service`, пользователь: `postgres`, пароль: `rootroot`.
+
+или подкорректировать строку подключения в backend/kis/Startup.cs
+
+```var connectionString = "Server=localhost;Port=5432;Database=file-service;User Id=postgres;Password=rootroot;";```
+
+### Настройка Frontend
+установить [Node.js](https://nodejs.org/en/download)
+
+через `cmd` в директории frontend прописать
+`npm install`
+### Запуск
+Запустить проект Visual Studio
+
+Frontend через cmd в директории frontend
+
+`npm start`
+
 ## 📦 Зависимости
 
 .NET 8, c пакетами NuGet:
@@ -13,11 +37,7 @@
 
 `Scrutor` добавлен через `dotnet add package Scrutor`
 
-## Настройка БД
 
-в файле `Startup.cs` строка подключения
-
-```var connectionString = "Server=localhost;Port=5432;Database=file-service;User Id=postgres;Password=rootroot;";```
 ## Миграция
 **обновить Visual Studio и .net (sdk)**
 
