@@ -37,6 +37,7 @@ Frontend через cmd в директории frontend
 
 `Scrutor` добавлен через `dotnet add package Scrutor`
 `BCrypt` добавлен через `dotnet add package BCrypt.Net-Next`
+
 ---
 ## 🔹 Backend
 ### 1. Entity: 
