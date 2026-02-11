@@ -36,6 +36,7 @@ Frontend через cmd в директории frontend
 * В сочетании с postgres: `Npgsql.EntityFrameworkCore.PostgreSQL`
 
 `Scrutor` добавлен через `dotnet add package Scrutor`
+
 `BCrypt` добавлен через `dotnet add package BCrypt.Net-Next`
 
 ---
