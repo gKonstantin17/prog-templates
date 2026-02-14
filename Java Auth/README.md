@@ -18,7 +18,7 @@ Backend:
 
 локальный url: `http://localhost:8080`
 
-публичный url: `https://security.cloudpub.ru
+публичный url: `https://security.cloudpub.ru`
 
 публикация по http, по порту 8080
 
