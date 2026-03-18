@@ -177,7 +177,7 @@ spring.servlet.multipart.max-file-size=50MB
 spring.servlet.multipart.max-request-size=50MB
 
 # Jitsi Meet
-jitsi.url=https://100.87.154.47:8443
+jitsi.url=https://200.87.154.47:8443
 jitsi.jwt.app-id=logopedic_app
 jitsi.jwt.app-secret=logopedic_secret_key_min_32_chars_for_security
 ```
@@ -410,7 +410,7 @@ npm start
 |-----------|-----|--------|
 | Frontend | http://localhost:4200 | ✅ |
 | Backend API | http://localhost:8081/api | ✅ |
-| Jitsi | https://100.87.154.47:8443 | ✅ |
+| Jitsi | https://200.87.154.47:8443 | ✅ |
 | PostgreSQL | localhost:5433 | ✅ |
 
 ---
@@ -546,7 +546,7 @@ p2p: { enabled: false }
 
 **Решение:** В `jitsi/.env`:
 ```bash
-JVB_ADVERTISE_IPS=100.87.154.47  # Ваш реальный IP
+JVB_ADVERTISE_IPS=200.87.154.47  # Ваш реальный IP
 ```
 
 ### CORS ошибки
