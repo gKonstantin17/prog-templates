@@ -1,0 +1,25 @@
+.presentation-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: white;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+}
+
+.presentation-toolbar {
+  padding: 0 16px;
+}
+
+.spacer {
+  flex: 1;
+}
+
+.pdf-viewer {
+  flex: 1;
+  overflow: auto;
+  background: #525659;
+}

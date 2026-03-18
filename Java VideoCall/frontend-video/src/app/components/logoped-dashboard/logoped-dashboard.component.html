@@ -1,0 +1,83 @@
+<mat-toolbar color="primary" class="dashboard-toolbar">
+  <span class="toolbar-title">Кабинет логопеда</span>
+  <span class="spacer"></span>
+  <span class="user-name">{{ userName() }}</span>
+  <button mat-button class="logout-btn" (click)="logout()">
+    <mat-icon>logout</mat-icon>
+    Выход
+  </button>
+</mat-toolbar>
+
+<div class="dashboard-container">
+  <div class="header">
+    <h1 class="page-title">Мои занятия</h1>
+    <button mat-raised-button color="accent" class="create-btn" (click)="openCreateDialog()">
+      <mat-icon>add</mat-icon>
+      Создать занятие
+    </button>
+  </div>
+
+  @if (loading()) {
+    <div class="loading">
+      <mat-spinner diameter="40"></mat-spinner>
+    </div>
+  } @else if (sessions().length === 0) {
+    <div class="no-sessions">
+      <mat-icon>event_busy</mat-icon>
+      <p>Нет запланированных занятий</p>
+    </div>
+  } @else {
+    <div class="sessions-grid">
+      @for (session of sessions(); track session.id) {
+        <mat-card class="session-card" appearance="outlined">
+          <mat-card-header>
+            <mat-card-title>{{ session.title }}</mat-card-title>
+            <mat-card-subtitle>
+              <mat-icon>group</mat-icon>
+              <span>{{ session.patientIds.length }} пациент{{ session.patientIds.length === 1 ? '' : 'а' }}</span>
+            </mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content>
+            <div class="session-info">
+              <div class="info-row">
+                <mat-icon>schedule</mat-icon>
+                <span>{{ formatDate(session.startTime) }}</span>
+              </div>
+              <div class="info-row">
+                <mat-icon>timer</mat-icon>
+                <span>до {{ formatTime(session.endTime) }}</span>
+              </div>
+              <div class="info-row">
+                <mat-icon>info</mat-icon>
+                <span>{{ session.status }}</span>
+              </div>
+            </div>
+            @if (session.canJoin) {
+              <div class="status-badge available">
+                <mat-icon>check_circle</mat-icon>
+                <span>Доступно для подключения</span>
+              </div>
+            }
+          </mat-card-content>
+          <mat-card-actions align="end" class="card-actions">
+            <button
+              mat-button
+              class="action-btn"
+              [disabled]="!session.canJoin"
+              (click)="joinSession(session.id)">
+              <mat-icon>videocam</mat-icon>
+              Подключиться
+            </button>
+            <button
+              mat-button
+              class="action-btn"
+              (click)="completeSession(session.id)">
+              <mat-icon>check</mat-icon>
+              Завершить
+            </button>
+          </mat-card-actions>
+        </mat-card>
+      }
+    </div>
+  }
+</div>

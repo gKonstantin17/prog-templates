@@ -1,0 +1,73 @@
+<mat-toolbar color="accent">
+  <span>Кабинет пациента</span>
+  <span class="spacer"></span>
+  <span>{{ userName() }}</span>
+  <button mat-button (click)="logout()">
+    <mat-icon>logout</mat-icon>
+    Выход
+  </button>
+</mat-toolbar>
+
+<div class="dashboard-container">
+  <h1>Мои занятия</h1>
+
+  @if (loading()) {
+    <div class="loading">
+      <mat-spinner diameter="40"></mat-spinner>
+    </div>
+  } @else if (sessions().length === 0) {
+    <p class="no-sessions">Нет запланированных занятий</p>
+  } @else {
+    <div class="sessions-grid">
+      @for (session of sessions(); track session.id) {
+        <mat-card class="session-card">
+          <mat-card-header>
+            <mat-card-title>{{ session.title }}</mat-card-title>
+            <mat-card-subtitle>
+              <mat-icon>person</mat-icon>
+              Логопед: {{ session.logopedName }}
+            </mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content>
+            <p>
+              <mat-icon>schedule</mat-icon>
+              {{ formatDate(session.startTime) }}
+            </p>
+            <p>
+              <mat-icon>timer</mat-icon>
+              до {{ formatTime(session.endTime) }}
+            </p>
+            <p>
+              <mat-icon>info</mat-icon>
+              {{ session.status }}
+            </p>
+            @if (session.canJoin) {
+              <p class="can-join">
+                <mat-icon>check_circle</mat-icon>
+                Доступно для подключения
+              </p>
+            } @else if (isWaiting(session)) {
+              <p class="waiting">
+                <mat-icon>hourglass_empty</mat-icon>
+                Ожидание начала
+              </p>
+            } @else if (isEnded(session)) {
+              <p class="ended">
+                <mat-icon>cancel</mat-icon>
+                Занятие завершено
+              </p>
+            }
+          </mat-card-content>
+          <mat-card-actions align="end">
+            <button mat-raised-button color="primary"
+                    [disabled]="!session.canJoin"
+                    (click)="joinSession(session.id)">
+              <mat-icon>videocam</mat-icon>
+              Подключиться
+            </button>
+          </mat-card-actions>
+        </mat-card>
+      }
+    </div>
+  }
+</div>

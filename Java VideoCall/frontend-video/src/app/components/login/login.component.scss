@@ -1,0 +1,98 @@
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 20px;
+}
+
+.login-card {
+  width: 100%;
+  max-width: 420px;
+  background: white;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+
+  mat-card-header {
+    padding: 24px 24px 16px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    mat-card-title {
+      font-size: 24px;
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 8px;
+    }
+
+    mat-card-subtitle {
+      font-size: 14px;
+      color: #666;
+    }
+  }
+
+  mat-card-content {
+    padding: 0 24px 24px;
+  }
+}
+
+.full-width {
+  width: 100%;
+  margin-bottom: 16px;
+
+  .mat-mdc-form-field-flex {
+    height: 56px;
+  }
+}
+
+.error-message {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #d32f2f;
+  font-size: 14px;
+  margin-bottom: 16px;
+  padding: 12px;
+  background: #ffebee;
+  border-radius: 8px;
+
+  mat-icon {
+    font-size: 20px;
+    width: 20px;
+    height: 20px;
+  }
+}
+
+button {
+  margin-top: 24px;
+  height: 56px;
+  font-size: 16px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+
+  mat-icon {
+    margin-right: 8px;
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+}
+
+// Анимация появления карточки
+.login-card {
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

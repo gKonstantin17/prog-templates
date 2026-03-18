@@ -1,0 +1,49 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: 'Roboto', 'Helvetica Neue', sans-serif;
+  background-color: #f5f7fa;
+}
+
+/* Material Icons - правильное отображение */
+.material-icons,
+mat-icon {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
+  vertical-align: middle;
+  min-width: 24px;
+  min-height: 24px;
+}
+
+/* Иконки в кнопках */
+button mat-icon,
+.mat-mdc-button mat-icon,
+.mat-mdc-raised-button mat-icon {
+  margin-right: 8px;
+  font-size: 18px;
+  width: 18px;
+  height: 18px;
+  min-width: 18px !important;
+  min-height: 18px !important;
+}
+
+/* Angular Material theme colors */
+:root {
+  --mat-sys-primary: #3f51b5;
+  --mat-sys-accent: #ff4081;
+}

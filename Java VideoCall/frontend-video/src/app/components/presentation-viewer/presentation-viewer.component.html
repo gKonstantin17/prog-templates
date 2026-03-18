@@ -1,0 +1,30 @@
+<div class="presentation-container">
+  <mat-toolbar color="primary" class="presentation-toolbar">
+    <span>{{ fileName }}</span>
+    <span class="spacer"></span>
+    <button mat-icon-button (click)="previousPage()" [disabled]="page <= 1">
+      <mat-icon>navigate_before</mat-icon>
+    </button>
+    <span>{{ page }} / {{ total }}</span>
+    <button mat-icon-button (click)="nextPage()" [disabled]="page >= total">
+      <mat-icon>navigate_next</mat-icon>
+    </button>
+    <button mat-icon-button (click)="close.emit()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-toolbar>
+
+  <div class="pdf-viewer">
+    <pdf-viewer
+      [src]="pdfUrl"
+      [(page)]="page"
+      [show-all]="false"
+      [stick-to-page]="true"
+      [render-text]="true"
+      [zoom]="1"
+      [autoresize]="true"
+      [fit-to-page]="true"
+      style="width: 100%; height: 100%;">
+    </pdf-viewer>
+  </div>
+</div>

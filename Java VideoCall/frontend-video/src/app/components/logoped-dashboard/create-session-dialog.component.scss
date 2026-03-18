@@ -1,0 +1,129 @@
+h2[mat-dialog-title] {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 22px;
+  font-weight: 600;
+  color: #333;
+  padding: 20px 24px;
+  margin: 0;
+  border-bottom: 1px solid #e0e0e0;
+
+  mat-icon {
+    color: #9c27b0;
+    font-size: 28px;
+    width: 28px;
+    height: 28px;
+  }
+}
+
+mat-dialog-content {
+  padding: 24px;
+  min-width: 500px;
+}
+
+.full-width {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.datetime-row {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 20px;
+
+  .half-width {
+    flex: 1;
+    min-width: 0;
+  }
+}
+
+.patients-section {
+  margin-top: 8px;
+
+  h3 {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    color: #555;
+    margin: 0 0 16px 0;
+
+    mat-icon {
+      font-size: 20px;
+      width: 20px;
+      height: 20px;
+      color: #9c27b0;
+    }
+  }
+
+  .patients-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-height: 200px;
+    overflow-y: auto;
+    padding: 8px;
+    background: #f9f9f9;
+    border-radius: 8px;
+
+    mat-checkbox {
+      padding: 8px;
+      border-radius: 4px;
+      transition: background 0.2s;
+
+      &:hover {
+        background: rgba(156, 39, 176, 0.05);
+      }
+
+      ::ng-deep {
+        .mdc-checkbox__background {
+          border-color: #9c27b0;
+        }
+
+        .mdc-checkbox--checked {
+          .mdc-checkbox__background {
+            background-color: #9c27b0;
+            border-color: #9c27b0;
+          }
+        }
+      }
+    }
+  }
+}
+
+mat-dialog-actions {
+  padding: 16px 24px;
+  border-top: 1px solid #e0e0e0;
+  gap: 12px;
+
+  button {
+    font-weight: 500;
+    transition: all 0.2s ease;
+
+    mat-icon {
+      margin-right: 6px;
+    }
+
+    &:active {
+      transform: scale(0.98);
+    }
+  }
+}
+
+// Адаптив для мобильных
+@media (max-width: 600px) {
+  mat-dialog-content {
+    min-width: auto;
+    width: 100%;
+  }
+
+  .datetime-row {
+    flex-direction: column;
+
+    .half-width {
+      width: 100%;
+    }
+  }
+}

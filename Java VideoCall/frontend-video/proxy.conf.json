@@ -1,0 +1,8 @@
+{
+  "/api": {
+    "target": "https://video1.cloudpub.ru",
+    "secure": false,
+    "changeOrigin": true,
+    "withCredentials": true
+  }
+}

@@ -1,0 +1,112 @@
+<div class="video-room">
+  <mat-toolbar color="primary" class="room-toolbar">
+    <span>{{ roomName() }}</span>
+    <span class="spacer"></span>
+    <button mat-icon-button (click)="toggleMute()" [color]="isMuted() ? 'warn' : undefined">
+      <mat-icon>{{ isMuted() ? 'mic_off' : 'mic' }}</mat-icon>
+    </button>
+    <button mat-icon-button (click)="toggleCamera()" [color]="isCameraOff() ? 'warn' : undefined">
+      <mat-icon>{{ isCameraOff() ? 'videocam_off' : 'videocam' }}</mat-icon>
+    </button>
+    @if (isLogoped()) {
+      <button mat-button (click)="toggleScreenShare()">
+        <mat-icon>present_to_all</mat-icon>
+        Экран
+      </button>
+      <button mat-button (click)="toggleTileView()" [color]="tileViewEnabled() ? 'accent' : undefined">
+        <mat-icon>grid_view</mat-icon>
+        {{ tileViewEnabled() ? 'Сетка вкл' : 'Сетка' }}
+      </button>
+      <button mat-button (click)="showMaterials()">
+        <mat-icon>description</mat-icon>
+        Материалы
+      </button>
+    }
+    <button mat-button color="warn" (click)="leaveRoom()">
+      <mat-icon>call_end</mat-icon>
+      Выйти
+    </button>
+  </mat-toolbar>
+
+  <div class="room-content">
+    <!-- Контейнер для Jitsi IFrame - показываем всегда -->
+    <div #jitsiContainer id="jitsi-meet-frame" class="jitsi-frame"></div>
+
+    <!-- Индикатор загрузки поверх контейнера -->
+    @if (connecting()) {
+      <div class="connecting-overlay">
+        <mat-spinner diameter="60"></mat-spinner>
+        <p>Подключение к комнате...</p>
+      </div>
+    }
+
+    <!-- Панель материалов -->
+    @if (materials().length > 0 || isLogoped()) {
+      <div class="materials-panel">
+        <h3>Материалы</h3>
+        @if (isLogoped()) {
+          <div class="upload-section">
+            <input 
+              type="file" 
+              #fileInput 
+              accept="application/pdf" 
+              (change)="uploadMaterial($event)" 
+              style="display:none">
+            <button mat-raised-button color="primary" (click)="fileInput.click()">
+              <mat-icon>upload</mat-icon>
+              Загрузить PDF
+            </button>
+          </div>
+        }
+        @for (material of materials(); track material.id) {
+          <div class="material-item">
+            <mat-icon>description</mat-icon>
+            <span>{{ material.fileName }}</span>
+            <div class="material-actions">
+              <a
+                [href]="materialService.getMaterialUrl(material.id)"
+                target="_blank"
+                mat-icon-button
+                title="Открыть в новом окне">
+                <mat-icon>open_in_new</mat-icon>
+              </a>
+              @if (isLogoped()) {
+                <button
+                  mat-icon-button
+                  color="warn"
+                  (click)="deleteMaterial(material.id)"
+                  title="Удалить">
+                  <mat-icon>delete</mat-icon>
+                </button>
+              }
+            </div>
+          </div>
+        }
+      </div>
+    }
+
+    <!-- Индикаторы состояния -->
+    <div class="status-indicators">
+      @if (isScreenSharing()) {
+        <div class="status-badge screen-sharing">
+          <mat-icon>present_to_all</mat-icon>
+          <span>Демонстрация экрана</span>
+        </div>
+      }
+      
+      @if (isLogoped() && isScreenSharing()) {
+        <div class="status-badge info">
+          <mat-icon>info</mat-icon>
+          <span>Пациенты видят ваш экран</span>
+        </div>
+      }
+      
+      @if (!isLogoped() && isScreenSharing()) {
+        <div class="status-badge info">
+          <mat-icon>visibility</mat-icon>
+          <span>Вы видите экран логопеда</span>
+        </div>
+      }
+    </div>
+  </div>
+</div>

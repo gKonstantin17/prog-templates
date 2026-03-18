@@ -1,0 +1,48 @@
+<h2 mat-dialog-title>
+  <mat-icon>add_circle</mat-icon>
+  Создать занятие
+</h2>
+<mat-dialog-content>
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-label>Название занятия</mat-label>
+    <input matInput [(ngModel)]="title" placeholder="Например: Занятие по звуку Р">
+  </mat-form-field>
+
+  <div class="datetime-row">
+    <mat-form-field appearance="outline" class="half-width">
+      <mat-label>Начало</mat-label>
+      <input matInput type="datetime-local" [(ngModel)]="startTime">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="half-width">
+      <mat-label>Окончание</mat-label>
+      <input matInput type="datetime-local" [(ngModel)]="endTime">
+    </mat-form-field>
+  </div>
+
+  <div class="patients-section">
+    <h3>
+      <mat-icon>group</mat-icon>
+      Пациенты:
+    </h3>
+    <div class="patients-list">
+      @for (patient of patients; track patient.id) {
+        <mat-checkbox 
+          (change)="togglePatient(patient.id, $event)"
+          [checked]="selectedPatients.includes(patient.id)">
+          {{ patient.fullName || patient.username }}
+        </mat-checkbox>
+      }
+    </div>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button (click)="dialogRef.close()">
+    <mat-icon>close</mat-icon>
+    Отмена
+  </button>
+  <button mat-raised-button color="primary" (click)="create()">
+    <mat-icon>check</mat-icon>
+    Создать
+  </button>
+</mat-dialog-actions>
