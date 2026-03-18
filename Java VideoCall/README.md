@@ -1,5 +1,7 @@
 # Java Видеозвонки (UI Angular + Jitsi Meet)
 
+[скачать проект](https://github.com/gKonstantin17/prog-templates/releases/tag/java-video)
+
 Реализация видеоконференций для занятий с использованием **Jitsi Meet** (self-hosted) и **JWT авторизации**
 
 **Стек:**
