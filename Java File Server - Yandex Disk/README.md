@@ -25,7 +25,8 @@
 - Создаем приложение
 - Запрашиваемые права: всё, что связано с disk
 - Сохраняем token ClientID
-- Переходим на `https://oauth.yandex.ru/authorize?response=token&client_id=<ClientID>`, вставив свой ClientID
+- Переходим на `https://oauth.yandex.ru/authorize?response_type=code&client_id=<ClientID>`, вставив свой ClientID
+- Если не работает, уточнить по `https://yandex.ru/dev/id/doc/ru/codes/code-url#code-request`
 - Получаем: OAuthToken `y0__xD...`
 - OAuthToken вставляем в `application.properties` в поле `yandex.token=`
 ## Модель данных
