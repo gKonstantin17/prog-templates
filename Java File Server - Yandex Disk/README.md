@@ -27,6 +27,35 @@
 - Сохраняем token ClientID
 - Переходим на `https://oauth.yandex.ru/authorize?response_type=code&client_id=<ClientID>`, вставив свой ClientID
 - Если не работает, уточнить по `https://yandex.ru/dev/id/doc/ru/codes/code-url#code-request`
+- Получаем код
+Код нужен чтобы выполнить запрос:
+
+```
+POST /token HTTP/1.1
+Host: https://oauth.yandex.ru/
+Content-type: application/x-www-form-urlencoded
+Content-Length: <длина тела запроса>
+[Authorization: Basic <закодированная методом base64 строка `client_id:client_secret`>]
+   grant_type=authorization_code
+ & code=<код подтверждения>
+```
+
+Через Postman делается так:
+- POST запрос
+- URL: `https://oauth.yandex.ru/token`
+вкладка Authorization
+- Type: Basic Auth
+- Username: ваш client_id
+- Password: ваш client_secret
+Вкладка Body
+- опция x-www-form-urlencoded (важно, не form-data, не raw)
+- добавляем поля:
+
+| KEY               | VALUE                        |
+|-------------------|------------------------------|
+| `grant_type`      | `authorization_code`         |
+| `code`            | полученный код подтверждения |
+
 - Получаем: OAuthToken `y0__xD...`
 - OAuthToken вставляем в `application.properties` в поле `yandex.token=`
 ## Модель данных
