@@ -43,10 +43,12 @@ Content-Length: <длина тела запроса>
 Через Postman делается так:
 - POST запрос
 - URL: `https://oauth.yandex.ru/token`
+  
 вкладка Authorization
 - Type: Basic Auth
 - Username: ваш client_id
 - Password: ваш client_secret
+
 Вкладка Body
 - опция x-www-form-urlencoded (важно, не form-data, не raw)
 - добавляем поля:
